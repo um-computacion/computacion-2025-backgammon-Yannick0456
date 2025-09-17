@@ -1,26 +1,20 @@
 import random
+from typing import List, Tuple
 
 class Dice:
     """
-    Representa dos dados de seis caras para el juego Backgammon.
+    Representa dos dados de seis caras para Backgammon.
+    Si sale doble, hay 4 movimientos disponibles.
     """
+    def __init__(self, seed: int | None = None):
+        self.__rng__ = random.Random(seed)
+        self.__last_roll__: Tuple[int, int] = (0, 0)
 
-    def __init__(self):
-        self.__last_roll__ = (0, 0)
-
-    def roll(self) -> tuple[int, int]:
-        """
-        Lanza los dados y devuelve dos valores entre 1 y 6.
-
-        :return: Una tupla con los valores de los dos dados
-        """
-        d1 = random.randint(1, 6)
-        d2 = random.randint(1, 6)
+    def roll(self) -> Tuple[int, int, List[int]]:
+        d1 = self.__rng__.randint(1, 6)
+        d2 = self.__rng__.randint(1, 6)
         self.__last_roll__ = (d1, d2)
-        return self.__last_roll__
+        return d1, d2, ([d1] * 4 if d1 == d2 else [d1, d2])
 
-    def get_last_roll(self) -> tuple[int, int]:
-        """
-        Devuelve la última tirada realizada.
-        """
+    def get_last_roll(self) -> Tuple[int, int]:
         return self.__last_roll__
