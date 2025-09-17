@@ -1,19 +1,19 @@
 from backgammon.core.dice import Dice
 
-def test_roll_returns_two_values():
-    d = Dice()
-    values = d.roll()
-    assert isinstance(values, tuple)
-    assert len(values) == 2
+def test_dice_returns_three_values_and_moves_list():
+    d = Dice(seed=42)
+    d1, d2, values = d.roll()
+    assert isinstance(d1, int) and 1 <= d1 <= 6
+    assert isinstance(d2, int) and 1 <= d2 <= 6
+    assert isinstance(values, list)
 
-def test_roll_values_are_between_1_and_6():
-    d = Dice()
-    for _ in range(50):  # probar varias veces
-        v1, v2 = d.roll()
-        assert 1 <= v1 <= 6
-        assert 1 <= v2 <= 6
+def test_double_produces_four_moves():
+    # Probamos varias tiradas hasta encontrar un doble
+    d = Dice(seed=1)
+    for _ in range(200):
+        d1, d2, values = d.roll()
+        if d1 == d2:
+            assert values == [d1, d1, d1, d1]
+            return
+    assert False, "No salió doble en 200 tiradas (muy improbable)"
 
-def test_get_last_roll():
-    d = Dice()
-    rolled = d.roll()
-    assert d.get_last_roll() == rolled
