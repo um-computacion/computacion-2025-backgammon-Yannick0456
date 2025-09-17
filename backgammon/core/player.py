@@ -1,32 +1,20 @@
 class Player:
-    """
-    Representa un jugador en Backgammon.
-    """
-
-    def __init__(self, name: str):
-        """
-        Inicializa un jugador con un nombre y 15 fichas.
-
-        :param name: Nombre del jugador
-        """
+    """Jugador con nombre, color y conteo de fichas fuera (borne off)."""
+    def __init__(self, name: str, color: str) -> None:
+        if color not in ("white", "black"):
+            raise ValueError("color debe ser 'white' o 'black'")
         self.__name__ = name
-        self.__checkers__ = 15  # cantidad inicial de fichas
+        self.__color__ = color
+        self.__borne_off__ = 0
 
-    def remove_checker(self):
-        """
-        Quita una ficha del jugador (ej: al mover al tablero).
-        """
-        if self.__checkers__ > 0:
-            self.__checkers__ -= 1
+    @property
+    def name(self) -> str: return self.__name__
 
-    def add_checker(self):
-        """
-        Devuelve una ficha al jugador (ej: al capturar y volver a la barra).
-        """
-        self.__checkers__ += 1
+    @property
+    def color(self) -> str: return self.__color__
 
-    def get_name(self) -> str:
-        return self.__name__
+    @property
+    def borne_off(self) -> int: return self.__borne_off__
 
-    def get_checkers(self) -> int:
-        return self.__checkers__
+    def bear_off(self, count: int = 1) -> None:
+        self.__borne_off__ = min(15, self.__borne_off__ + count)
