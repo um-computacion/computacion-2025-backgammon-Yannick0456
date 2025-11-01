@@ -3,3 +3,4 @@ class RuleError(Exception):
 
 class InvalidMoveError(RuleError):
     """Movimiento inválido en el contexto actual."""
+

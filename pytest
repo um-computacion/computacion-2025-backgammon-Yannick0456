@@ -1,0 +1,2 @@
+[pytest]
+addopts = --maxfail=1 --disable-warnings --cov=backgammon/core --cov-report=term-missing --cov-fail-under=90

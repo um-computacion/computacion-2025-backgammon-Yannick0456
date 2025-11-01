@@ -1,0 +1,7 @@
+# Changelog
+## [1.0.0] - Initial complete TP scaffold
+- Core con reglas: barra (enter), bloqueos, golpes, bear-off, victoria.
+- CLI completa (roll, move, enter, bearoff, board, help, quit).
+- Tests con cobertura objetivo ≥90% en core.
+- CI (GitHub Actions), Dockerfile, pytest.ini.
+- Documentación: README, JUSTIFICACION, prompts.

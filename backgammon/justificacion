@@ -1,0 +1,21 @@
+# JUSTIFICACION
+
+## Diseño y responsabilidades
+- BackgammonGame: orquesta turnos, tiradas, forzados básicos y victoria.
+- Board: estado y reglas (24 puntos, barra, golpes, bloqueos, bear-off).
+- Point: stack de fichas.
+- Dice: tiradas con dobles y semilla para test.
+- Player: nombre, color, borne-off.
+- Checker: ficha de un color.
+
+## Atributos con `__`
+Todos los atributos de instancia están definidos como `self.__nombre__`.
+
+## Excepciones
+- InvalidMoveError para reglas inválidas.
+
+## Testing y cobertura
+Se prioriza `core` con escenarios: setup estándar, golpes, bloqueos, barra/enter, bear-off, victoria, turnos y dados. Se usan dados deterministas (FakeDice).
+
+## SOLID
+- SRP y separación estricta core/UI.

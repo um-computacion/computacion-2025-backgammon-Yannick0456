@@ -1,5 +1,9 @@
 class Checker:
-    """Ficha de backgammon: pertenece a un color (white/black)."""
+    """Ficha de backgammon: pertenece a un color (white/black).
+
+    Atributos:
+        __owner__: color del propietario.
+    """
     def __init__(self, owner: str) -> None:
         if owner not in ("white", "black"):
             raise ValueError("owner debe ser 'white' o 'black'")

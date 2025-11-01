@@ -1,3 +1,4 @@
-pygame
-pytest
-redis
+pygame==2.6.0
+click==8.1.7
+pytest==8.3.2
+pytest-cov==5.0.0

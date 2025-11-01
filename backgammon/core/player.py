@@ -1,5 +1,5 @@
 class Player:
-    """Jugador con nombre, color y conteo de fichas fuera (borne off)."""
+    """Jugador con nombre, color y conteo de fichas borneadas."""
     def __init__(self, name: str, color: str) -> None:
         if color not in ("white", "black"):
             raise ValueError("color debe ser 'white' o 'black'")
@@ -9,10 +9,8 @@ class Player:
 
     @property
     def name(self) -> str: return self.__name__
-
     @property
     def color(self) -> str: return self.__color__
-
     @property
     def borne_off(self) -> int: return self.__borne_off__
 
